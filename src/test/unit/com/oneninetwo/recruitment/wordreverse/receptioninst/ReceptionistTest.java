@@ -17,7 +17,7 @@ import static com.insightfullogic.lambdabehave.Suite.describe;
 public class ReceptionistTest {{
 
     describe("process user input", it -> {
-        it.should("process the user input and reply with a welcome message containing the user name", expect -> {
+        it.should("process the user input and ask the greeter to welcome the user", expect -> {
             String userName = "Simona";
             Greeter greeter = Mockito.mock(Greeter.class);
             when(greeter.welcome(userName)).thenReturn(String.format("Good morning %s", userName));
@@ -41,7 +41,7 @@ public class ReceptionistTest {{
             expect.that(reply.stop).is(false);
         });
 
-        it.should("process the user input and reply with a goodbye message containing the user name", expect -> {
+        it.should("process the user input and ask the greet the user goodby", expect -> {
             String userName = "Simona";
             Greeter greeter = Mockito.mock(Greeter.class);
             when(greeter.goodbye(userName)).thenReturn(String.format("Good bye %s", userName));
