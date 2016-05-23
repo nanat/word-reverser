@@ -7,6 +7,9 @@ import com.oneninetwo.recruitment.wordreverse.receptionist.Receptionist;
 import com.oneninetwo.recruitment.wordreverse.receptionist.Reply;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
+
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static com.insightfullogic.lambdabehave.Suite.describe;
 
@@ -23,7 +26,7 @@ public class ReceptionistTest {{
 
             Reply reply = receptionist.receive(userInput);
 
-            expect.that(reply.message).containsString(userName);
+            verify(greeter, times(1)).welcome(userName);
             expect.that(reply.stop).is(false);
         });
 
@@ -48,7 +51,7 @@ public class ReceptionistTest {{
 
             Reply reply = receptionist.receive(userInput);
 
-            expect.that(reply.message).containsString(userName);
+            verify(greeter, times(1)).goodbye(userName);
             expect.that(reply.stop).is(true);
         });
     });
