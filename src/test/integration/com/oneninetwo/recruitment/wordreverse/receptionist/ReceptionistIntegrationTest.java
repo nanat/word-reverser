@@ -3,6 +3,7 @@ package com.oneninetwo.recruitment.wordreverse.receptionist;
 import com.insightfullogic.lambdabehave.JunitSuiteRunner;
 import com.oneninetwo.recruitment.wordreverse.greeter.TimeWindowGreeter;
 import com.oneninetwo.recruitment.wordreverse.parser.MessageParser;
+import com.oneninetwo.recruitment.wordreverse.reverser.WordReverserWithComments;
 import org.junit.runner.RunWith;
 import java.time.LocalDateTime;
 import static com.insightfullogic.lambdabehave.Suite.describe;
@@ -12,7 +13,7 @@ public class ReceptionistIntegrationTest {{
 
     describe("process user input", it -> {
         it.should("process the user input and reply with a welcome message", expect -> {
-            Receptionist receptionist = new Receptionist(new TimeWindowGreeter());
+            Receptionist receptionist = new Receptionist(new TimeWindowGreeter(), new WordReverserWithComments());
             int currentHour = LocalDateTime.now().getHour();
             String userInput = "ohce Simona";
 
@@ -29,7 +30,7 @@ public class ReceptionistIntegrationTest {{
         });
 
         it.should("process the user input and reply with the reversed input", expect -> {
-            Receptionist receptionist = new Receptionist(new TimeWindowGreeter());
+            Receptionist receptionist = new Receptionist(new TimeWindowGreeter(), new WordReverserWithComments());
             String userInput = "hello";
 
             Reply reply = receptionist.receive(userInput);
@@ -39,7 +40,7 @@ public class ReceptionistIntegrationTest {{
         });
 
         it.should("process the user input and reply with a goodbye", expect -> {
-            Receptionist receptionist = new Receptionist(new TimeWindowGreeter());
+            Receptionist receptionist = new Receptionist(new TimeWindowGreeter(), new WordReverserWithComments());
             receptionist.receive("ohce Simona");
             String userInput = MessageParser.STOP;
 

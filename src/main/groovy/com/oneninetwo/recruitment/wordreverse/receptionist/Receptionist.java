@@ -7,10 +7,12 @@ import com.oneninetwo.recruitment.wordreverse.reverser.WordReverser;
 public class Receptionist {
 
     private Greeter greeter;
+    private WordReverser reverser;
     private String userName = "";
 
-    public Receptionist(Greeter greeter) {
+    public Receptionist(Greeter greeter, WordReverser reverser) {
         this.greeter = greeter;
+        this.reverser = reverser;
     }
 
     public Reply receive(String message) {
@@ -24,7 +26,7 @@ public class Receptionist {
                 reply = new Reply(greeter.welcome(userName));
                 break;
             case REVERSE:
-                reply = new Reply(WordReverser.reverse(message));
+                reply = new Reply(reverser.reverse(message));
                 break;
             case STOP:
                 reply = new Reply(greeter.goodbye(userName), true);

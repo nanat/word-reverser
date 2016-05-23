@@ -3,6 +3,7 @@ package com.oneninetwo.recruitment.wordreverse;
 import com.oneninetwo.recruitment.wordreverse.greeter.TimeWindowGreeter;
 import com.oneninetwo.recruitment.wordreverse.receptionist.Receptionist;
 import com.oneninetwo.recruitment.wordreverse.receptionist.Reply;
+import com.oneninetwo.recruitment.wordreverse.reverser.WordReverserWithComments;
 import cucumber.api.java.Before;
 import cucumber.api.java8.En;
 import static org.junit.Assert.assertEquals;
@@ -14,7 +15,7 @@ public class StopStepdefs implements En {
 
     @Before
     public static void setUp() {
-        receptionist = new Receptionist(new TimeWindowGreeter());
+        receptionist = new Receptionist(new TimeWindowGreeter(), new WordReverserWithComments());
     }
 
     public StopStepdefs() {
